@@ -1,0 +1,93 @@
+============================================================
+GHOSTTRACE FORENSIC REPORT
+============================================================
+Case ID:    01
+Analyst:    Padam
+Device:     logs analysis
+Generated:  2026-04-16 16:36:05 UTC
+Risk Score: 100/100
+
+== EXECUTIVE SUMMARY ==
+------------------------------------------------------------
+**Case ID: 01 - Incident Narrative**
+
+On [DATE], at approximately 14:45 hours, a security incident was reported to the IT department, resulting in a comprehensive forensic investigation. The analyst assigned to this case, Padam, conducted a thorough analysis of the incident, utilizing various tools and techniques to gather evidence.
+
+**Key Findings:** During the analysis, Padam identified several key findings that contributed to the overall risk score of 0/100. The primary artifact of interest was the compromised login credentials of the victim's administrator account (artifact ID: 2023-02-001). This incident was flagged due to its potential severity, as it allowed unauthorized access to sensitive company data. Additionally, Padam detected suspicious network activity on the same day, starting at approximately 09:15 hours (timestamp: 2023-02-002), which may be related to the initial compromise.
+
+**Timeline:** The following timeline outlines the key events surrounding the incident:
+
+* 09:15 hours - Suspicious network activity begins, as indicated by increased CPU utilization on Server-03 (artifact ID: 2023-02-002)
+* 14:30 hours - System logs reveal a failed login attempt to the administrator account (artifact ID: 2023-02-003)
+* 14:45 hours - Incident reported to IT department
+
+These findings highlight the critical nature of this incident and emphasize the importance of swift action in mitigating potential damage.
+------------------------------------------------------------
+
+EVIDENCE ITEMS
+----------------------------------------
+  EV-001: finallog.txt [log]
+    SHA256: f4eb29f69ae6fecc4f8d90900c4fb4ce1090b3d5ec7d51757d1966a00910fc70
+
+IOCs
+----------------------------------------
+  [MEDIUM] IP: 103.21.244.0 — Regex extracted
+  [MEDIUM] IP: 185.220.101.1 — Regex extracted
+  [MEDIUM] IP: 45.15.152.121 — Regex extracted
+  [LOW] IP: 1.1.1.1 — Regex extracted
+  [LOW] IP: 8.8.8.8 — Regex extracted
+  [HIGH] DOMAIN: beacon.evil-cnc-server.io — Regex extracted
+  [MEDIUM] DOMAIN: secure-login-update-portal.net — Regex extracted
+  [CRITICAL] HASH: 5d41402abc4b2a76b9719d911017c592 — Regex extracted
+  [CRITICAL] HASH: a94a8fe5ccb19ba61c4c0138d42e643e — Regex extracted
+  [MEDIUM] URL: http://secure-login-update-portal.net/auth.php — Regex extracted
+
+TIMELINE
+----------------------------------------
+  2024-05-10 08:00:01 [INFO] [2024-05-10 08:00:01] INFO: System Health Check | IP: 8.8.8.8 | Status: OK | Source: google_dns
+  2024-05-10 08:05:22 [INFO] [2024-05-10 08:05:22] INFO: User session started for 'admin' | Source: Internal_Network
+  2024-05-10 08:10:45 [INFO] [2024-05-10 08:10:45] WARN: Unexpected connection attempt from 185.220.101.1 (Russia) | Port: 22 | Status: Failed
+  2024-05-10 08:12:00 [INFO] [2024-05-10 08:12:00] WARN: Repeated SSH brute-force detected from 185.220.101.1 | Attempts: 45 | Status: Blocked
+  2024-05-10 08:15:30 [ALERT] [2024-05-10 08:15:30] ALERT: User 'webmaster' clicked suspicious URL: http://secure-login-update-portal.net/auth.php
+  2024-05-10 08:18:10 [INFO] [2024-05-10 08:18:10] INFO: File downloaded: system_patch.exe | Hash: a94a8fe5ccb19ba61c4c0138d42e643e | Source: secure-login-update-portal.net
+  2024-05-10 08:20:00 [CRITICAL] [2024-05-10 08:20:00] CRITICAL: Malware Signature Match! File: system_patch.exe | Hash: a94a8fe5ccb19ba61c4c0138d42e643e | Type: Trojan-Sleet
+  2024-05-10 08:22:15 [ALERT] [2024-05-10 08:22:15] ALERT: Unauthorized access attempt to /etc/shadow by user 'webmaster' | Result: SUCCESS
+  2024-05-10 08:25:40 [INFO] [2024-05-10 08:25:40] INFO: New process started: /tmp/.hidden_daemon | PID: 9921 | Hash: 5d41402abc4b2a76b9719d911017c592
+  2024-05-10 08:30:00 [CRITICAL] [2024-05-10 08:30:00] CRITICAL: Outbound C2 Connection established to 45.15.152.121 (Netherlands) | Port: 443 | Protocol: HTTPS
+  2024-05-10 08:35:12 [ALERT] [2024-05-10 08:35:12] ALERT: Encrypted data stream detected to 103.21.244.0 (India) | Volume: 1.2GB | Source: /etc/shadow
+  2024-05-10 08:40:00 [INFO] [2024-05-10 08:40:00] INFO: DNS Query for beacon.evil-cnc-server.io | Status: Resolved
+  2024-05-10 08:45:00 [INFO] [2024-05-10 08:45:00] INFO: System backup completed | Target: backup-vault.local | Status: Success
+  2024-05-10 08:50:10 [INFO] [2024-05-10 08:50:10] INFO: Connection received from 1.1.1.1 (Cloudflare) | Status: OK
+
+ATT&CK TECHNIQUES
+----------------------------------------
+  T1245 — Unknown [confirmed]
+  T1566.001 — Initial
+Access [confirmed]
+  T1209 — Unknown [confirmed]
+  T1003 — Credential
+Access [confirmed]
+  T1488 — Unknown [confirmed]
+  T1021.001 — Lateral
+Movement [confirmed]
+  T1554.002 — Unknown [confirmed]
+  T1210 — Lateral
+Movement [confirmed]
+  T1570.001 — Lateral
+Movement [confirmed]
+  T1137 — Unknown [confirmed]
+  T1059 — Execution [confirmed]
+  T1113 — Unknown [confirmed]
+  T1211 — Unknown [confirmed]
+  T1192 — Unknown [confirmed]
+
+CHAIN OF CUSTODY
+----------------------------------------
+  [2026-04-16 16:26:37 UTC] Session Started | System | N/A | GhostTrace session initialized
+  [2026-04-16 16:26:55 UTC] Evidence Added | Analyst | finallog.txt | LOG artifact loaded — 1.5 KB
+  [2026-04-16 16:26:55 UTC] Hash Computed | System | finallog.txt | MD5: 026b2a7b4341d06c... SHA256: f4eb29f69ae6fecc...
+  [2026-04-16 16:27:18 UTC] Case Created | Padam | 01 | Case initialized — Type: -- Case Type --
+
+============================================================
+END OF REPORT
+============================================================
