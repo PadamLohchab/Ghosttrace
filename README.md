@@ -158,8 +158,10 @@ Generate Forensic Report
 # ⚠️ Disclaimer
 
 This project is intended strictly for educational, research, and authorized digital forensic investigation purposes only.
-----
-👨‍💻 Author
+
+---
+
+#👨‍💻 Author
 Padam
 
 🎓 B.Tech — Computer Science Engineering (Cyber Security)
