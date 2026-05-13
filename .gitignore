@@ -1,0 +1,65 @@
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE Files
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Build Files
+build/
+dist/
+*.spec
+
+# Database Files
+*.db
+*.sqlite3
+
+# Environment Variables
+.env
+
+# Forensics Sensitive Data
+disk_images/
+memory_dumps/
+evidence/
+case_files/
+artifacts/raw/
+
+# Reports (Optional)
+# Uncomment if reports contain sensitive data
+# sample_reports/
+
+# Jupyter Notebook Cache
+.ipynb_checkpoints/
+
+# PyInstaller
+*.manifest
+*.exe
+
+# Test Cache
+.pytest_cache/
+
+# Coverage Reports
+htmlcov/
+.coverage
+
+# Mac/Linux Hidden Files
+.*.swp
+*.bak
